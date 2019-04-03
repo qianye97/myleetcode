@@ -1,0 +1,19 @@
+**Here is my solution**
+KEY:slide window
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        map<char,bool> exist;
+        map<char,int> m;
+        int start = 0,maxLen = 0;
+        for(int i = 0; i < s.length(); i++){
+            if(exist[s[i]]){
+                maxLen = max(maxLen,i-start);
+                start =  max(m[s[i]]+1,start);
+            }
+            m[s[i]] = i;
+            exist[s[i]] = true;
+        }
+        return max(maxLen,(int)s.length()-start);
+    }
+};
