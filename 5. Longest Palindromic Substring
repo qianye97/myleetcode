@@ -1,0 +1,23 @@
+**Here is my solution**
+KEY:skip duplicates
+
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        if(s.length() == 0)  return "";
+        if(s.length() == 1)  return s;
+        int start = 0,maxLen = 1;
+        for(int i = 0; i < s.length();){
+            if(s.length()-i <= maxLen/2)  break;
+            int k = i,j = i;
+            while(k < s.length()-1 && s[k]==s[k+1]){  k++;}
+            i = k+1;
+            while(k < s.length()-1 && j-1>=0 && s[j-1] == s[k+1]){ j--;k++;}
+            int curLen = k-j+1;
+            if(curLen > maxLen){  maxLen = curLen;start = j;}
+        }
+        return s.substr(start,maxLen);
+    }
+};
+
+Appreciate:  感谢@hh1985给我的灵感，address:https://leetcode.com/problems/longest-palindromic-substring/discuss/2923/Simple-C%2B%2B-solution-(8ms-13-lines)
