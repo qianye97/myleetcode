@@ -1,0 +1,26 @@
+    
+**Here is my solution**
+KEY:interger to string
+
+class Solution {
+public:
+    int reverse(int x) {
+        stringstream ss;
+        ss<<x;
+        string tempStr = ss.str();
+        string result = "";
+        for(int i = tempStr.length()-1; i >= 0; i--){
+            result += tempStr[i];
+        }
+        if(x < 0){
+             result = "-"+result;
+        }
+        stringstream ss1(result);
+        long long a;
+        ss1>>a;
+        if(a < -pow(2,31) || a > (pow(2,31)+1)){
+            a = 0;
+        }  
+        return a;
+    }
+};
