@@ -1,0 +1,26 @@
+**Here is my solution**
+KEY:simulate
+
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if(numRows == 1){
+            return s;
+        }
+        vector<string> str(min(numRows,(int)(s.size())));
+        int curRow = 0;
+        bool flag = true;
+        for(int i = 0;i < s.length(); i++){
+            str[curRow] += s[i];
+            if(i != 0 && i%(numRows-1) == 0){
+                flag = !flag;
+            }
+            curRow += flag?1:-1;
+        }
+        string result = "";
+        for(string tempStr:str){
+            result += tempStr;
+        }
+        return result;
+    }
+};
